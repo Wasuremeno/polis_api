@@ -10,10 +10,13 @@ createServer((page) =>
     createInertiaApp({
         page,
         render: renderToString,
-        resolve: (name) => resolvePageComponent(
-            `./Pages/${name}.tsx`,
-            import.meta.glob('./Pages/**/*.tsx')
-        ),
+        resolve: (name) => {
+            // Исправляем путь: ищем в Pages (с большой буквы)
+            return resolvePageComponent(
+                `./Pages/${name}.tsx`,
+                import.meta.glob('./Pages/**/*.tsx')
+            );
+        },
         setup: ({ App, props }) => <App {...props} />,
         title: (title) => title ? `${title} - ${appName}` : appName,
     })
