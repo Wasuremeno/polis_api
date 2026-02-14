@@ -7,7 +7,7 @@ import path from 'path';
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.tsx'],
+            input: ['resources/js/app.tsx'],
             ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
@@ -17,7 +17,6 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'resources/js'),
-            '@pages': path.resolve(__dirname, 'resources/js/Pages'),
         },
     },
 });
