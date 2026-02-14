@@ -6,12 +6,29 @@ import { Article } from '@/types';
 export default function Index() {
     const [articles, setArticles] = useState<Article[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch('/api/articles')
-            .then(res => res.json())
+        fetch('/api/articles', {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(async res => {
+                if (!res.ok) {
+                    const text = await res.text();
+                    throw new Error(`HTTP error! status: ${res.status}, response: ${text.substring(0, 100)}`);
+                }
+                return res.json();
+            })
             .then(data => {
-                setArticles(data.data);
+                setArticles(data.data || data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error('Fetch error:', err);
+                setError(err.message);
                 setLoading(false);
             });
     }, []);
@@ -21,6 +38,24 @@ export default function Index() {
             <MainLayout>
                 <div className="text-center py-12">
                     <div className="text-gray-500">Loading articles...</div>
+                </div>
+            </MainLayout>
+        );
+    }
+
+    if (error) {
+        return (
+            <MainLayout>
+                <div className="text-center py-12">
+                    <div className="text-red-500">Error: {error}</div>
+                    <div className="mt-4">
+                        <button 
+                            onClick={() => window.location.reload()}
+                            className="text-indigo-600 hover:text-indigo-500"
+                        >
+                            Try again
+                        </button>
+                    </div>
                 </div>
             </MainLayout>
         );
