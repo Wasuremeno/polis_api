@@ -8,7 +8,7 @@ export default function Index() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/v1/articles')
+        fetch('/api/articles')
             .then(res => res.json())
             .then(data => {
                 setArticles(data.data);

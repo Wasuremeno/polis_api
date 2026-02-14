@@ -14,7 +14,7 @@ export default function Show({ id }: Props) {
     const [commentContent, setCommentContent] = useState('');
 
     useEffect(() => {
-        fetch(`/api/v1/articles/${id}`)
+        fetch(`/api/articles/${id}`)
             .then(res => res.json())
             .then(data => {
                 setArticle(data.data);
@@ -25,7 +25,7 @@ export default function Show({ id }: Props) {
     const handleSubmitComment = (e: React.FormEvent) => {
         e.preventDefault();
         
-        fetch(`/api/v1/articles/${id}/comments`, {
+        fetch(`/api/articles/${id}/comments`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

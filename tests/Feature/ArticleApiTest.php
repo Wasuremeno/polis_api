@@ -14,7 +14,7 @@ class ArticleApiTest extends TestCase
     {
         Article::factory(3)->create();
 
-        $response = $this->getJson('/api/v1/articles');
+        $response = $this->getJson('/api/articles');
 
         $response->assertStatus(200)
             ->assertJsonCount(3, 'data');
@@ -24,7 +24,7 @@ class ArticleApiTest extends TestCase
     {
         $article = Article::factory()->create();
 
-        $response = $this->getJson("/api/v1/articles/{$article->id}");
+        $response = $this->getJson("/api/articles/{$article->id}");
 
         $response->assertStatus(200)
             ->assertJsonPath('data.id', $article->id)
@@ -38,7 +38,7 @@ class ArticleApiTest extends TestCase
             'content' => 'Test content',
         ];
 
-        $response = $this->postJson('/api/v1/articles', $articleData);
+        $response = $this->postJson('/api/articles', $articleData);
 
         $response->assertStatus(201)
             ->assertJsonPath('data.title', 'Test Article');

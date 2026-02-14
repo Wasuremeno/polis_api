@@ -11,7 +11,7 @@ export default function Create() {
         e.preventDefault();
         setSubmitting(true);
 
-        fetch('/api/v1/articles', {
+        fetch('/api/articles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

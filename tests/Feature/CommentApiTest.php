@@ -20,7 +20,7 @@ class CommentApiTest extends TestCase
             'content' => 'Great article!',
         ];
 
-        $response = $this->postJson("/api/v1/articles/{$article->id}/comments", $commentData);
+        $response = $this->postJson("/api/articles/{$article->id}/comments", $commentData);
 
         $response->assertStatus(201)
             ->assertJsonPath('data.author_name', 'John Doe');
