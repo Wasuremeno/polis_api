@@ -1,0 +1,155 @@
+{
+  "info": {
+    "_postman_id": "f10038be-a0c4-46e9-9230-13170254f2dc",
+    "name": "polis_api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "api/articles",
+      "id": "fad4e1ec-ea93-4a9e-b69d-1d2a3e0b8cd6",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/articles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "articles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/articles/1",
+      "id": "f1a8ef9d-7447-40a4-be50-8a6f17f805dd",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/articles/1?Accept=application/json&Content-Type=application/json",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "articles",
+            "1"
+          ],
+          "query": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api/articles",
+      "id": "49a16c04-0d7a-4723-afcf-bfcceaaa1217",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"My New Article\",\n    \"content\": \"This is the content of my new article. It can be multiple paragraphs long and contain any text.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/articles?Accept=application/json&Content-Type=application/json",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "articles"
+          ],
+          "query": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "New Request",
+      "id": "b00fa475-d8c2-470a-a4a0-ddd4546ad782",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"author_name\": \"John Doe\",\n    \"content\": \"Great article! Very informative.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/articles/1/comments?Accept=application/json&Content-Type=application/json",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "articles",
+            "1",
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "Accept",
+              "value": "application/json"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
